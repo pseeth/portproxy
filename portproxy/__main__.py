@@ -20,7 +20,6 @@ def _read_file(path):
     return data
 
 HEADERS = [
-    "App",
     "Machine name", 
     "Port", 
     "Link via PortProxy", 
@@ -54,12 +53,6 @@ def home():
             local_link = v['link']
 
             with _table.add(tbody()):
-                try:
-                    _url = favicon.get(local_link)[0].url
-                except:
-                    _url = None
-                td(img(width=35, src=_url))
-
                 td(k.split(':')[0])
                 td(k.split(':')[1])
                 
