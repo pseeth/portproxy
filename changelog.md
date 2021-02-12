@@ -1,4 +1,7 @@
 # Changelog
+## v0.4.0
+- If SSH tunnel is stopped, or goes down, an attempt is made to restart it at the same port as before. 
+- Improved interface for handling connections.
 
 ## v0.3.0
 - First official release

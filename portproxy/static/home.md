@@ -36,4 +36,5 @@ For example, to get on port `8888` on `machine1`, navigate to
 is running on `localhost:5000`.
 
 And that's it! The status of all the ports is at the top of this
-page.
+page. You can reconnect all tunnels (say after closing your laptop
+and opening it back up) by hitting [Reconnect all](/reconnect).
