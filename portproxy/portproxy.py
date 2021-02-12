@@ -3,7 +3,6 @@ import dominate
 from dominate.util import raw
 from dominate.tags import *
 import marko
-import favicon
 import portpicker
 from pathlib import Path
 import sshtunnel
