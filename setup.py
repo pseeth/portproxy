@@ -12,7 +12,7 @@ long_description = (here / 'README.md').read_text(encoding='utf-8')
 
 setup(
     name='portproxy',
-    version='0.1.0', 
+    version='0.3.0', 
     description='Automatically forward and manage ports from any remote machines.',
     long_description=long_description,
     long_description_content_type='text/markdown',
@@ -46,5 +46,6 @@ setup(
         'console_scripts': [
             'portproxy = portproxy:launch'
         ]
-    }
+    },
+    include_package_data=True
 )
