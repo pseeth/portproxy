@@ -42,4 +42,9 @@ setup(
     extras_require={ 
         'tests': ['pytest', 'pytest-cov'],
     },
+    entry_points = {
+        'console_scripts': [
+            'portproxy = portproxy:launch'
+        ]
+    }
 )
