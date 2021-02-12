@@ -1,5 +1,8 @@
 # PortProxy
 
+![Example Image of PortProxy](/images/portproxy_dark.png)
+
+
 PortProxy is a simple service for forwarding ports dynamically 
 upon request from machine names found in your ssh config file.
 Here's how it works. Say you have a config file in your ssh
