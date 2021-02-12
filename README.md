@@ -37,5 +37,27 @@ For example, to get on port `8888` on `machine1`, navigate to
 `localhost:5000/machine1/8888` in your browser, if `PortProxy` 
 is running on `localhost:5000`.
 
-And that's it! Navigate to [status](/status) to see all your forwarded
-ports.
+And that's it!
+
+# Releasing
+
+Do the following steps:
+
+```
+python setup.py sdist
+```
+
+Upload it to test PyPI:
+
+```
+pip install twine
+twine upload --repository testpypi dist/*
+pip install -U --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple -U portproxy
+```
+
+Make sure you can install it and it works (e.g. run the examples). Now upload
+to actual PyPI:
+
+```
+twine upload dist/*
+```
