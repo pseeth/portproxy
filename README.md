@@ -1,6 +1,6 @@
 # PortProxy
 
-![Example Image of PortProxy](/images/image.png)
+![Example Image of PortProxy](/images/interface.png)
 
 
 PortProxy is a simple service for forwarding ports dynamically 
