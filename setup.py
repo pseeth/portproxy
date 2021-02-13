@@ -12,7 +12,7 @@ long_description = (here / 'README.md').read_text(encoding='utf-8')
 
 setup(
     name='portproxy',
-    version='0.4.0', 
+    version='0.5.0', 
     description='Automatically forward and manage ports from any remote machines.',
     long_description=long_description,
     long_description_content_type='text/markdown',
@@ -33,6 +33,7 @@ setup(
     packages=find_packages(),  # Required
     python_requires='>=3.5, <4',
     install_requires=[
+        'argbind',
         'sshtunnel',
         'dominate',
         'Flask',
@@ -44,7 +45,7 @@ setup(
     },
     entry_points = {
         'console_scripts': [
-            'portproxy = portproxy:launch'
+            'portproxy = portproxy:main'
         ]
     },
     include_package_data=True

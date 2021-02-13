@@ -1,2 +1,2 @@
-from . import launch
-launch()
+from . import main
+main()

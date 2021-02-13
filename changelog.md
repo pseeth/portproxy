@@ -1,4 +1,9 @@
 # Changelog
+## v0.5.0
+- Adding a button for reconnecting one SSH tunnel after stopping it.
+- Refactoring and simplifying code
+- Adding arguments to the launcher for better configurability.
+
 ## v0.4.0
 - If SSH tunnel is stopped, or goes down, an attempt is made to restart it at the same port as before. 
 - Improved interface for handling connections.
