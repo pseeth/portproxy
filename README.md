@@ -4,7 +4,7 @@
 
 Start and manage ssh tunnels just by browsing to easily-remembered URLs.
 
-Turn `ssh -N -f -L 8888:localhost:8888 you@machine` into browse to `http://[portproxy]/machine1/8888`.
+`ssh -N -f -L 8888:localhost:8888 you@machine` -> `http://[portproxy]/machine1/8888`.
 
 
 ![Example Image of PortProxy](/images/interface.png)
