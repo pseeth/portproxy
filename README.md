@@ -1,8 +1,6 @@
 # PortProxy
 
-**tl;dr**
-
-Start and manage ssh tunnels just by browsing to easily-remembered URLs.
+**TL;DR: Start and manage ssh tunnels just by browsing to easily-remembered URLs.**
 
 `ssh -N -f -L 8888:localhost:8888 you@machine` -> `http://[portproxy]/machine1/8888`.
 
