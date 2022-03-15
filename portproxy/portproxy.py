@@ -157,6 +157,7 @@ def make_tunnel(
     }
 
 @app.route('/<machine_name>/<port>')
+@app.route('/<machine_name>/<port>/')
 @app.route('/<machine_name>/<port>/<path:u_path>')
 def redirect_to_machine(machine_name, port, u_path=None):
     port = int(port)

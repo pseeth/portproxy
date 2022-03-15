@@ -1,4 +1,7 @@
 # Changelog
+## v0.6.2
+- Fixing issue with trailing slash.
+
 ## v0.6.1
 - Bugfix
 
