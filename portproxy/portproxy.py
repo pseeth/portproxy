@@ -1,4 +1,5 @@
-from flask import Flask, redirect
+from dataclasses import dataclass
+from flask import Flask, redirect, request
 import dominate
 from dominate.util import raw
 from dominate.tags import *
@@ -41,6 +42,24 @@ HEADERS = [
     "Reconnect",
     "Delete",
 ]
+
+@argbind.bind(without_prefix=True)
+@dataclass
+class Args:
+    """Launch the Flask server for PortProxy.
+
+    Parameters
+    ----------
+    host : str, optional
+        Host for Flask server, by default 'localhost'
+    port : int, optional
+        Port to run Flask server on, by default 5000
+    ssh_config_file : str, optional
+        Where your SSH file is with all of your machines.
+    """
+    host: str = "127.0.0.1"
+    port: int = 5000
+    ssh_config_file: str = "~/.ssh/config"
 
 @app.route('/')
 def home():
@@ -91,11 +110,9 @@ def home():
     
     return str(doc)
 
-@argbind.bind(without_prefix=True)
 def make_tunnel(
     machine_name, 
     port,
-    ssh_config_file : str = "~/.ssh/config"
 ):
     """Makes the tunnel.
 
@@ -104,6 +121,7 @@ def make_tunnel(
     ssh_config_file : str, optional
         Path to SSH config file, by default "~/.ssh/config"
     """
+    ssh_config_file = Args().ssh_config_file
     key = f"{machine_name}:{port}"
     if key in ports:
         picked_port = ports[key]['local_port']
@@ -139,11 +157,19 @@ def make_tunnel(
     }
 
 @app.route('/<machine_name>/<port>')
-def redirect_to_machine(machine_name, port):
+@app.route('/<machine_name>/<port>/<path:u_path>')
+def redirect_to_machine(machine_name, port, u_path=None):
     port = int(port)
     key = f"{machine_name}:{port}"    
     ports[key] = make_tunnel(machine_name, port)
-    return redirect(ports[key]['link'])
+    link = ports[key]['link']
+    
+    url = request.url
+    path = url.split(f"{machine_name}/{port}")[-1]
+
+    if u_path is not None:
+        link += path
+    return redirect(link)
 
 @app.route('/stop')
 def stop():
@@ -190,24 +216,9 @@ def clean_up(signal, frame):
         v['tunnel'].stop()
     sys.exit(0)
 
-@argbind.bind(without_prefix=True)
-def launch(
-    host : str = 'localhost',
-    port : int = 5000,
-):
-    """Launch the Flask server for PortProxy.
-
-    Parameters
-    ----------
-    host : str, optional
-        Host for Flask server, by default 'localhost'
-    port : int, optional
-        Port to run Flask server on, by default 5000
-    """
-    signal.signal(signal.SIGINT, clean_up)
-    app.run(debug=True, host=host, port=port)    
-
 def main():
     args = argbind.parse_args()
     with argbind.scope(args):
-        launch()
+        arg = Args()
+        signal.signal(signal.SIGINT, clean_up)
+        app.run(debug=True, host=arg.host, port=arg.port)

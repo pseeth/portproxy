@@ -38,3 +38,13 @@ is running on `localhost:5000`.
 And that's it! The status of all the ports is at the top of this
 page. You can reconnect all tunnels (say after closing your laptop
 and opening it back up) by hitting [Reconnect all](/reconnect).
+
+### Have a link to forward?
+
+If you have a full link to forward, you can use this utility to automatically open the forwarded, local version:
+
+```
+python -m portproxy.forward [machine_name] [link]
+```
+
+The link will be opened in your browser if possible via the `open` command on MacOS. Otherwise the link will be displayed in your terminal to open up.
