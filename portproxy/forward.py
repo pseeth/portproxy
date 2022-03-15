@@ -8,7 +8,6 @@ from urllib.parse import urlparse
 from .portproxy import Args
 import subprocess
 
-@argbind.bind(positional=True, without_prefix=True)
 def open_link(
     machine_name: str,
     url: str,
@@ -30,9 +29,8 @@ def open_link(
     except:
         pass
 
-    
-
-if __name__ == "__main__":
+def forward():
+    run = argbind.bind(open_link, positional=True, without_prefix=True)
     args = argbind.parse_args()
     with argbind.scope(args):
-        open_link()
+        run()

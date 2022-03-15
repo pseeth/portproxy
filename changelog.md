@@ -1,4 +1,7 @@
 # Changelog
+## v0.6.1
+- Bugfix
+
 ## v0.6.0
 - Allow all the extra stuff after a link to get forwarded as well. `localhost/machine_name/port/blah -> localhost/redirected_port/blah`.
 - Added a utility for copy/pasting a link and having it be automatically portproxified. Usage: `python -m portproxy.forward [machine_name] [link]`.
